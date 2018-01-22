@@ -45,6 +45,44 @@ $(document).on("click", "#greetings", function() {
 });
 
 // These functions ask you what you've done
+const hair = function() {
+  console.log("hair");
+};
+
+const toDo = function() {
+  if (hour >= 18 || hour <= 6) {
+    $(bud).html(
+      `<p>Have you done your to-do list yet?</p>`
+    );
+    $(user).html(
+      `<button id="todo-yes" class="yes-button">Done!</button>
+       <button id="todo-no" class="no-button">Not yet...</button>`
+    );
+
+    // Results
+    $(document).on("click", "#todo-yes", function() {
+      yes++;
+      $(user).html("");
+      $(bud).html(
+        `<p>You're really on top of it today!</p>`
+      );
+      setTimeout(hair, 1500);
+    });
+
+    $(document).on("click", "#todo-no", function() {
+      no++;
+      $(user).html("");
+      $(bud).html(
+        `<p>Well, it's not too late to do it before you go to bed...</p>`
+      );
+      setTimeout(hair, 1500);
+    });
+  }
+  else {
+    hair();
+  }
+};
+
 const meds = function() {
   // Question prompt
   $(bud).html(
@@ -62,7 +100,7 @@ const meds = function() {
     $(bud).html(
       `<p>That's great! Consistency is key to healthy habits.</p>`
     );
-    // setTimeout(toDo, 1500);
+    setTimeout(toDo, 1500);
   });
 
   $(document).on("click", "#meds-no", function() {
@@ -71,7 +109,7 @@ const meds = function() {
     $(bud).html(
       `<p>I know you know this, but you really have to do that.</p>`
     );
-    // setTimeout(toDo, 1500);
+    setTimeout(toDo, 1500);
   });
 };
 
@@ -92,7 +130,7 @@ const meditate = function() {
     $(bud).html(
       `<p>Excellent! I can really feel your peaceful aura!</p>`
     );
-    setTimeout(meds, 3500);
+    setTimeout(meds, 1500);
   });
 
   $(document).on("click", "#meditate-no", function() {
@@ -101,7 +139,7 @@ const meditate = function() {
     $(bud).html(
       `<p>Okay... but don't forget tomorrow.</p>`
     );
-    setTimeout(meds, 3500);
+    setTimeout(meds, 1500);
   })
 };
 
