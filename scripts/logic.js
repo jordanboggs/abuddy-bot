@@ -62,7 +62,7 @@ const meds = function() {
     $(bud).html(
       `<p>That's great! Consistency is key to healthy habits.</p>`
     );
-    // setTimeout(toDo(), 1500);
+    // setTimeout(toDo, 1500);
   });
 
   $(document).on("click", "#meds-no", function() {
@@ -71,7 +71,7 @@ const meds = function() {
     $(bud).html(
       `<p>I know you know this, but you really have to do that.</p>`
     );
-    // setTimeout(toDo(), 1500);
+    // setTimeout(toDo, 1500);
   });
 };
 
@@ -92,7 +92,7 @@ const meditate = function() {
     $(bud).html(
       `<p>Excellent! I can really feel your peaceful aura!</p>`
     );
-    setTimeout(meds(), 1500);
+    setTimeout(meds, 3500);
   });
 
   $(document).on("click", "#meditate-no", function() {
@@ -101,7 +101,7 @@ const meditate = function() {
     $(bud).html(
       `<p>Okay... but don't forget tomorrow.</p>`
     );
-    setTimeout(meds(), 1500);
+    setTimeout(meds, 3500);
   })
 };
 
@@ -123,7 +123,7 @@ const gym = function() {
     $(bud).html(
       `<p>Hey, not bad! Keep up the good work!</p>`
     );
-    setTimeout(meditate(), 1500);
+    setTimeout(meditate, 1500);
   });
   
   $(document).on("click", "#gym-no", function() {
@@ -132,7 +132,7 @@ const gym = function() {
     $(bud).html(
       `<p>Aw, too bad. Don't forget to go tomorrow!</p>`
     );
-    setTimeout(meditate(), 1500); 
+    setTimeout(meditate, 1500); 
   });
 };
 
