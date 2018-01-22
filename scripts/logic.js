@@ -23,7 +23,6 @@ const bud = "#buddy-chat";
 const user = "#user-chat";
 const day = new Date().getDay();
 const hour = new Date().getHours();
-
 let today = "";
 let yes = 0;
 let no = 0;
@@ -42,15 +41,68 @@ $(document).on("click", "#greetings", function() {
   $(bud).html(
     `<p>I'm going to ask you some questions so we can track your productivity. Remember, you agreed to this earlier so you'd better tell the truth!</p>`
   );
-  $(user).html(`<button id="continue1">Okay...</button>`);
+  $(user).html(`<button id="continue">Okay...</button>`);
 });
 
 // These functions ask you what you've done
+const meds = function() {
+  // Question prompt
+  $(bud).html(
+    `<p>Did you remember to take your meds today?`
+  );
+  $(user).html(
+    `<button id="meds-yes" class="yes-button">Yes</button>
+     <button id="meds-no" class="no-button">No</button>`
+  );
+
+  // Result
+  $(document).on("click", "#meds-yes", function() {
+    yes++;
+    $(user).html("");
+    $(bud).html(
+      `<p>That's great! Consistency is key to healthy habits.</p>`
+    );
+    // setTimeout(toDo(), 1500);
+  });
+
+  $(document).on("click", "#meds-no", function() {
+    no++;
+    $(user).html("");
+    $(bud).html(
+      `<p>I know you know this, but you really have to do that.</p>`
+    );
+    // setTimeout(toDo(), 1500);
+  });
+};
+
 const meditate = function() {
   // Question prompt
   $(bud).html(
-    `<p></p>`
-  )
+    `<p>Did you meditate today?</p>`
+  );
+  $(user).html(
+    `<button id="meditate-yes" class="yes-button">Yes</button>
+     <button id="meditate-no" class="no-button">No</button>`
+  );
+
+  // Result
+  $(document).on("click", "#meditate-yes", function() {
+    yes++;
+    $(user).html("");
+    $(bud).html(
+      `<p>Excellent! I can really feel your peaceful aura!</p>`
+    );
+    setTimeout(meds(), 1500);
+  });
+
+  $(document).on("click", "#meditate-no", function() {
+    no++;
+    $(user).html("");
+    $(bud).html(
+      `<p>Okay... but don't forget tomorrow.</p>`
+    );
+    setTimeout(meds(), 1500);
+  })
 };
 
 const gym = function() {
@@ -117,4 +169,6 @@ const reflection = function() {
       break;
   }
 };
-$(document).on("click", "#continue1", reflection());
+$(document).on("click", "#continue", function() {
+  reflection();
+});
