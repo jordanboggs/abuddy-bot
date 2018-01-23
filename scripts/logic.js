@@ -31,7 +31,7 @@ let no = 0;
 $(document).ready(function() {
   $(bud).html(
     `<h1>Welcome, ${name}!</h1>
-    <p>It's me, your friend and buddy, aBuddy the Accountabilibuddy Bot!</p>`
+    <p>It's me, your friend and buddy, aBuddy the Accountabilibuddy Bot! And I'll always be there for you!</p>`
   );
   $(user).html(
     `<button id="greetings">Hi, buddy!</button>` 

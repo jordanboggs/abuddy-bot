@@ -16,7 +16,5 @@
     "url": "https://github.com/preaksneview/abuddy-bot/issues"
   },
   "homepage": "https://github.com/preaksneview/abuddy-bot#readme",
-  "dependencies": {
-    "moment": "^2.20.1"
-  }
+  "dependencies": {}
 }
