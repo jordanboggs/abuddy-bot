@@ -19,6 +19,7 @@
  * Deep condition and wash hair
  */
 
+const name = "Britney";
 const bud = "#buddy-chat";
 const user = "#user-chat";
 const day = new Date().getDay();
@@ -29,7 +30,7 @@ let no = 0;
 
 $(document).ready(function() {
   $(bud).html(
-    `<h1>Welcome, Britney!</h1>
+    `<h1>Welcome, ${name}!</h1>
     <p>It's me, your friend and buddy, aBuddy the Accountabilibuddy Bot!</p>`
   );
   $(user).html(
@@ -44,13 +45,73 @@ $(document).on("click", "#greetings", function() {
   $(user).html(`<button id="continue">Okay...</button>`);
 });
 
+// This function is the last part
+const finish = function() {
+  $(user).html(
+    `<button id="finish" class="finish-button">See you tomorrow!</button>`
+  );
+
+  if (yes > no) {
+    $(bud).html(
+      `<p>Great job, ${name}!</p>
+       <p>You got so much done today. You should be proud! Keep up the good work, and I'll see you tomorrow!</p>`);
+  }
+  else {
+    $(bud).html(
+      `<p>Well ${name}, you didn't do as much as you planned to. But don't beat yourself up. Habits take time to build. Just remember: consistency is key! Keep it up, and I'll see you tomorrow!</p>`
+    );
+  }
+
+  $(document).on("click", "#finish", function() {
+    $(user).html("");
+    $(bud).html(
+      `<h1>Goodbye!</h1>`
+    );
+  });
+};
+
 // These functions ask you what you've done
 const hair = function() {
-  console.log("hair");
+  // Prompt
+  $(bud).html(
+    `<p>Have you deep conditioned and washed your hair yet this week?</p>`
+  );
+  $(user).html(
+    `<button id="hair-yes" class="yes-button">Yep</button>
+     <button id="hair-no" class="no-button">I'll do it later</button>`
+  );
+
+  // Result does not affect score
+  $(document).on("click", "#hair-yes", function() {
+    $(user).html("");
+    $(bud).html(
+      `<p>So healthy and beautiful!</p>`
+    );
+    setTimeout(finish, 2000);
+  });
+  $(document).on("click", "#hair-no", function() {
+    $(user).html("");
+    if (day < 6) {
+      $(bud).html(
+        `<p>That's cool, you've got plenty of time. It's only ${today}.</p>`
+      );
+    }
+    else if (day === 6) {
+      $(bud).html(
+        `<p>Well you better do it tomorrow! Because nobody cares if a Sunday counts as this week or next week, but <em>you</em> care about getting it done!</p>`
+      );
+    }
+    else {
+      console.log("ERROR how did you get here?");
+    }
+    setTimeout(finish, 2000);
+  })
 };
 
 const toDo = function() {
+  // Only asks question at night
   if (hour >= 18 || hour <= 6) {
+    // Prompt
     $(bud).html(
       `<p>Have you done your to-do list yet?</p>`
     );
@@ -66,7 +127,7 @@ const toDo = function() {
       $(bud).html(
         `<p>You're really on top of it today!</p>`
       );
-      setTimeout(hair, 1500);
+      setTimeout(hair, 2000);
     });
 
     $(document).on("click", "#todo-no", function() {
@@ -75,11 +136,14 @@ const toDo = function() {
       $(bud).html(
         `<p>Well, it's not too late to do it before you go to bed...</p>`
       );
-      setTimeout(hair, 1500);
+      setTimeout(hair, 2000);
     });
   }
-  else {
+  else if (hour > 6 && hour < 18) {
     hair();
+  }
+  else {
+    console.log("ERROR how did you get here?");
   }
 };
 
@@ -100,7 +164,7 @@ const meds = function() {
     $(bud).html(
       `<p>That's great! Consistency is key to healthy habits.</p>`
     );
-    setTimeout(toDo, 1500);
+    setTimeout(toDo, 2000);
   });
 
   $(document).on("click", "#meds-no", function() {
@@ -109,7 +173,7 @@ const meds = function() {
     $(bud).html(
       `<p>I know you know this, but you really have to do that.</p>`
     );
-    setTimeout(toDo, 1500);
+    setTimeout(toDo, 2000);
   });
 };
 
@@ -130,7 +194,7 @@ const meditate = function() {
     $(bud).html(
       `<p>Excellent! I can really feel your peaceful aura!</p>`
     );
-    setTimeout(meds, 1500);
+    setTimeout(meds, 2000);
   });
 
   $(document).on("click", "#meditate-no", function() {
@@ -139,7 +203,7 @@ const meditate = function() {
     $(bud).html(
       `<p>Okay... but don't forget tomorrow.</p>`
     );
-    setTimeout(meds, 1500);
+    setTimeout(meds, 2000);
   })
 };
 
@@ -161,7 +225,7 @@ const gym = function() {
     $(bud).html(
       `<p>Hey, not bad! Keep up the good work!</p>`
     );
-    setTimeout(meditate, 1500);
+    setTimeout(meditate, 2000);
   });
   
   $(document).on("click", "#gym-no", function() {
@@ -170,7 +234,7 @@ const gym = function() {
     $(bud).html(
       `<p>Aw, too bad. Don't forget to go tomorrow!</p>`
     );
-    setTimeout(meditate, 1500); 
+    setTimeout(meditate, 2000); 
   });
 };
 
