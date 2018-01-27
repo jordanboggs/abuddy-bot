@@ -41,10 +41,11 @@ $(document).ready(function() {
 
 $(document).on("click", "#greetings", function() {
   $(bud).append(
-    `<p>Hi, buddy!</p>`);
+    `<p class="right">Hi, buddy!</p>`);
   $(bud).append(
-    `<p>I'm going to ask you some questions so we can track your productivity. 
-    Remember, you agreed to this earlier so you'd better tell the truth!</p>`
+    `<p class="left">I'm going to ask you some questions so we can track your 
+    productivity. Remember, you agreed to this earlier so you'd better tell the 
+    truth!</p>`
   );
   $(user).html(`<button id="continue">Okay...</button>`);
 });
