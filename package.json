@@ -16,5 +16,7 @@
     "url": "https://github.com/preaksneview/abuddy-bot/issues"
   },
   "homepage": "https://github.com/preaksneview/abuddy-bot#readme",
-  "dependencies": {}
+  "dependencies": {
+    "material-components-web": "^0.30.0"
+  }
 }
